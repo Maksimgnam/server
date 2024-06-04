@@ -6,6 +6,7 @@ router.get('/jar/:jarId', async (req, res)=>{
     try {
         const jarId = req.params.jarId;
         const jar = await Jar.findById(jarId);
+        
         if (!jar) {
           return res.status(404).json({ error: 'Jar not found' });
         }

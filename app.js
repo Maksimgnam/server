@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
+const path = require('path')
 const jarRoute = require('./routes/jarsRoute');
 const jarIdRoute = require('./routes/jarIdRoute')
 const addJarRoute = require('./routes/addJarRoute')
@@ -13,6 +14,7 @@ const dbName = 'notify';
 const app = express();
 
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors())
 
 app.use('/api', jarRoute );
